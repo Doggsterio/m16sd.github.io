@@ -1,0 +1,223 @@
+/* ============================================
+   M16SD — Custom Styles
+   ============================================ */
+
+/* --- Base --- */
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: #c9a84c;
+  color: #0a0a0a;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c9a84c;
+}
+
+/* --- Header --- */
+#header {
+  background: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#header.scrolled {
+  background-color: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* --- Mobile Menu --- */
+#mobile-menu-btn.active .hamburger-line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+#mobile-menu-btn.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+#mobile-menu-btn.active .hamburger-line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* --- Hero Background Fallback --- */
+.hero-bg {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #1a1008 100%);
+}
+
+.hero-bg img {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.hero-bg img.loaded {
+  opacity: 1;
+}
+
+/* --- Scroll Animations --- */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered delays for grid children */
+.animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+.animate-on-scroll:nth-child(3) { transition-delay: 0.2s; }
+.animate-on-scroll:nth-child(4) { transition-delay: 0.3s; }
+
+/* --- Product Cards --- */
+.product-card {
+  transition: transform 0.5s ease, border-color 0.5s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+}
+
+/* --- Gallery Grid --- */
+.gallery-item img {
+  transition: transform 0.7s ease;
+}
+
+/* --- Lightbox --- */
+#lightbox {
+  transition: opacity 0.3s ease;
+}
+
+#lightbox.active {
+  display: flex;
+  opacity: 1;
+}
+
+#lightbox-img {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* --- Scroll-to-Top Button --- */
+#scroll-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* --- Language Button Active State --- */
+.lang-btn.active {
+  background-color: #c9a84c;
+  color: #0a0a0a;
+  font-weight: 600;
+}
+
+.lang-btn:not(.active) {
+  background-color: transparent;
+  color: #9ca3af;
+}
+
+.lang-btn:not(.active):hover {
+  color: #ffffff;
+}
+
+/* --- Section Divider Line --- */
+.section-divider {
+  width: 64px;
+  height: 1px;
+  background-color: #c9a84c;
+  margin: 0 auto;
+}
+
+/* --- Nav Link Active State --- */
+.nav-link.active {
+  color: #c9a84c;
+}
+
+/* --- Smooth Image Loading --- */
+img {
+  transition: opacity 0.5s ease;
+}
+
+img[src=""] {
+  opacity: 0;
+}
+
+/* --- Map Grayscale --- */
+.grayscale {
+  filter: grayscale(100%) contrast(0.8);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 640px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-grid .gallery-item:first-child {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .gallery-grid .gallery-item:last-child {
+    grid-column: span 2;
+  }
+
+  .gallery-grid .gallery-item img {
+    aspect-ratio: 1;
+  }
+}
+
+/* --- Pulse Animation for Stats --- */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-on-scroll.visible .font-heading {
+  animation: countUp 0.6s ease forwards;
+}
+
+/* --- Gold Glow on Hover --- */
+.gold-glow:hover {
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.2);
+}
+
+/* --- Loading Shimmer (for images before load) --- */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
